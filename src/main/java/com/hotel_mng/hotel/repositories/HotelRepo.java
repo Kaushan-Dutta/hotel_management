@@ -17,4 +17,9 @@ public interface HotelRepo extends JpaRepository<Hotel, Integer> {
     @Transactional
     @Query("UPDATE Hotel h SET h.contact = :contact WHERE h.id = :id")
     Object updateHotelContact(int id, HotelContact contact);
+
+    // @Modifying
+    // @Transactional
+    // @Query("UPDATE Hotel h SET h.meal = :meal WHERE h.id = :id")
+    // Object updateHotelMeal(int id, Meal meal);
 }

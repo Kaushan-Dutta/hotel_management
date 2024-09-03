@@ -1,10 +1,17 @@
 package com.hotel_mng.hotel.entity;
 
+// import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.CascadeType;
 
 @Entity
 @Table(name = "hotel")
@@ -17,6 +24,9 @@ public class Hotel {
     private String address;
 
     private HotelContact contact;
+
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    private Set<Meal> meals = new HashSet<>();
 
     public Hotel() {
     }
@@ -60,6 +70,14 @@ public class Hotel {
 
     public void setContact(HotelContact contact) {
         this.contact = contact;
+    }
+
+    public Set<Meal> getMeals() {
+        return meals;
+    }
+
+    public void setMeal(Meal meal) {
+        this.meals.add(meal);
     }
 
     @Override
